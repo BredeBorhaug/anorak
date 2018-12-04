@@ -1,0 +1,23 @@
+{
+  "name": "homeapi",
+  "version": "1.0.0",
+  "description": "The REST APIs for the HOS",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "HOS"
+  ],
+  "author": "Brede Boerhaug",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^2.2.16"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}
