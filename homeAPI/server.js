@@ -12,6 +12,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 require('./app/routes')(app, {});
 
 
+app.get("/", (req, res) => {
+    console.log("200")
+})
+
 app.listen(port, () => {
     console.log('We are live on ' + port);
 });
+
