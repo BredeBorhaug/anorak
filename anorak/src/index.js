@@ -13,6 +13,9 @@ import rootReducer from './reducers';
 const middleware = applyMiddleware(thunk, createLogger());
 export const store = createStore(rootReducer, middleware);
 
+
+
+
 ReactDOM.render(
   <Provider store={store}>
     <Routes />
