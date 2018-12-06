@@ -1,15 +1,43 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
+import Menu from '@material-ui/core/Menu';
 
-class Header extends React.Component {
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
+
+class App extends React.Component {
   state = {
+    auth: true,
     anchorEl: null,
   };
 
-  handleClick = event => {
+  handleChange = event => {
+    this.setState({ auth: event.target.checked });
+  };
+
+  handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -18,32 +46,65 @@ class Header extends React.Component {
   };
 
   render() {
-    const { anchorEl } = this.state;
+    const { classes } = this.props;
+    const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
     return (
-      <div>
-        <Button
-          aria-owns={open ? 'fade-menu' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleClick}
-        >
-          Open with fade transition
-        </Button>
-        <Menu
-          id="fade-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={this.handleClose}
-          TransitionComponent={Fade}
-        >
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>My account</MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
-        </Menu>
+      <div className={classes.root}>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
+            }
+            label={auth ? 'Logout' : 'Login'}
+          />
+        </FormGroup>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" color="inherit" className={classes.grow}>
+              Anorak
+            </Typography>
+            {auth && (
+              <div>
+                <IconButton
+                  aria-owns={open ? 'menu-appbar' : undefined}
+                  aria-haspopup="true"
+                  onClick={this.handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={this.handleClose}>Settings</MenuItem>
+                </Menu>
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
       </div>
     );
   }
 }
 
-export default Header;
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);
