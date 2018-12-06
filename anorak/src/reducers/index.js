@@ -1,8 +1,11 @@
-import { combineReducers } from 'redux'
-import todos from './todos'
-import visibilityFilter from './visibilityFilter'
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
-export default combineReducers({
-  todos,
-  visibilityFilter
-})
+import demo from './demo';
+
+const Reducers = combineReducers({
+    demo,
+    routing: routerReducer
+});
+
+export default Reducers;
