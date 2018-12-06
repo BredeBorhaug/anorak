@@ -12,6 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import {demoPrint} from '../Demo/Demo.js';
 
 const styles = {
   root: {
@@ -26,7 +27,7 @@ const styles = {
   },
 };
 
-class MenuAppBar extends React.Component {
+class App extends React.Component {
   state = {
     auth: true,
     anchorEl: null,
@@ -48,7 +49,6 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
     return (
       <div className={classes.root}>
         <FormGroup>
@@ -103,8 +103,8 @@ class MenuAppBar extends React.Component {
   }
 }
 
-MenuAppBar.propTypes = {
+App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default withStyles(styles)(App);
