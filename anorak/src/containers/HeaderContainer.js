@@ -2,8 +2,7 @@ import * as Actions from '../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 
-import App from '../components/App/App'
-
+import Header from '../components/Header/Header'
 
 function mapStateToProps(state) {
   return {
@@ -17,4 +16,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
