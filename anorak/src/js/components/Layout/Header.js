@@ -13,22 +13,23 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
 
-class App extends React.Component {
+const styles = {
+    root: {
+      flexGrow: 1,
+    },
+    grow: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginLeft: -12,
+      marginRight: 20,
+    },
+  };
+
+class Header extends React.Component {
   state = {
-    auth: true,
+    auth: false,
     anchorEl: null,
   };
 
@@ -43,6 +44,10 @@ class App extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
+  handleSignOut = () => {
+    this.setState({ auth: false });
+  }
 
   render() {
     const { classes } = this.props;
@@ -92,6 +97,7 @@ class App extends React.Component {
                 >
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                   <MenuItem onClick={this.handleClose}>Settings</MenuItem>
+                  <MenuItem onClick={this.handleSignOut}>SignOut</MenuItem>
                 </Menu>
               </div>
             )}
@@ -102,8 +108,8 @@ class App extends React.Component {
   }
 }
 
-App.propTypes = {
+Header.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(Header);
