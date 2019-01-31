@@ -1,0 +1,14 @@
+{
+  "name": "anorak_controller",
+  "version": "0.0.1",
+  "description": "The anorak controller",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Anorak"
+  ],
+  "author": "Brede Børhaug, Thomas Rudfoss",
+  "license": "MIT"
+}
