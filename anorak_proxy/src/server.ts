@@ -1,16 +1,19 @@
 // server.ts
-
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
 import express from "express";
 
-const app       = express();                  // we define our app using express
-const port      = process.env.PORT || 3010;   // Port 3010 used on localhost
+// initialize configuration
+dotenv.config();
+
+const app       = express();                    // we define our app using express
+const port      = process.env.SERVER_PORT;      // Port 3010 used on localhost
 
 // We now set up body parser
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
-// ROUTES FOR OUR API
+// ROUTES FOR ANORAK PROXY
 // ==========================================
 // First we get an instance of the express Router
 const router = express.Router();
