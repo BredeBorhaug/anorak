@@ -1,5 +1,4 @@
 # Anorak
 
-This is an open source project for an Home Operating System. Initially created to operate the authors home, but made available open source so others can make use of it.
+This is an open source project for the Anorak software suite. The Anorak software is software built by developers for developers to use and customize for your needs. If you are not a developers, consider yourself warned, but feel free to try.
 
-Generral idea is to make an operating system design philosophy for the home.
