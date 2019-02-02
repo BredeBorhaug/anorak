@@ -1,0 +1,32 @@
+{
+  "name": "anorak_controller_client",
+  "version": "0.0.1",
+  "description": "The controller client for the Anorak software",
+  "main": "dist/server.js",
+  "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Anorak"
+  ],
+  "author": "Brede Børhaug, Thomas Rudfoss",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.9",
+    "ts-node": "^8.0.2"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.0",
+    "@types/express": "^4.16.1",
+    "@types/node": "^10.12.20",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  }
+}
