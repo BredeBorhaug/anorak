@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.slider{
+		flex: 0 0 300px;
+		padding: 0 20px;
+	}
+	.btn{
+		flex: 0 0 auto;
+	}
+}
