@@ -23,6 +23,7 @@ export class Hassio {
 				this.socket = undefined
 				reject(ev)
 			}
+			socket.onmessage = this.onMessage
 		})
 
 	}
@@ -34,7 +35,8 @@ export class Hassio {
 			service: "google_say",
 			service_data: {
 				entity_id: "media_player.veracity_end",
-				message
+				message,
+				language: "en"
 			}
 		})
 	}
@@ -73,5 +75,8 @@ export class Hassio {
 		}
 
 		return this.socket!.send(JSON.stringify(fullOp))
+	}
+	public onMessage = (message: any) => {
+		console.log(message)
 	}
 }
