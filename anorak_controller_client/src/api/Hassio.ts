@@ -4,7 +4,8 @@ export class Hassio {
 
 	public constructor(
 		public hassioHostUrl: string,
-		private token: string
+		private token: string,
+		public entityId = "media_player.veracity_devcom"
 	) {
 	}
 
@@ -34,7 +35,7 @@ export class Hassio {
 			type: "call_service",
 			service: "google_say",
 			service_data: {
-				entity_id: "media_player.veracity_end",
+				entity_id: this.entityId,
 				message,
 				language: "en"
 			}
@@ -47,7 +48,7 @@ export class Hassio {
 			type: "call_service",
 			service: "media_play_pause",
 			service_data: {
-				entity_id: "media_player.veracity_end"
+				entity_id: this.entityId
 			}
 		})
 	}
@@ -58,7 +59,7 @@ export class Hassio {
 			type: "call_service",
 			service: "volume_set",
 			service_data: {
-				entity_id: "media_player.veracity_end",
+				entity_id: this.entityId,
 				volume_level: normalizedVolume / 100
 			}
 		})
