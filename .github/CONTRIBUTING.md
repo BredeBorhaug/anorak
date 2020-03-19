@@ -1,6 +1,6 @@
 # How to contribute to Home Operating System
 
-Love to get your contribution to the Home Operating System. In case you have a contribution, create a pull request and I will review it.
+Love to get your contribution to the Anorak. In case you have a contribution, create a pull request and I will review it.
 
 ## General guideline
 

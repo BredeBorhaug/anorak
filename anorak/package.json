@@ -1,0 +1,22 @@
+{
+  "name": "anorak",
+  "version": "0.0.1",
+  "description": "The anorak project",
+  "main": "app.js",
+  "scripts": {
+    "dev-start": "concurrently \"nodemon server/server.js\" \"nodemon ./client/bin/www\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "anorak"
+  ],
+  "author": "brede@borhaug.io",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  }
+}
