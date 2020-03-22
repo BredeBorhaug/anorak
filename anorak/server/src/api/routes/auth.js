@@ -1,14 +1,12 @@
+// Import requires
 require('dotenv').config()
-const express = require('express')
+const express = require(`express`)
+const router = express.Router()
 const path = require ('path')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
 
 
-
-const app = express()
-const PORT = 3010
-app.use(express.json())
 
 // Private key (must read utf8)
 const privatekey = fs.readFileSync("./private.key", "utf8")
@@ -44,16 +42,16 @@ const signOptions = {
 }
 
 
-/**
- * Set up the alive endpoint
- */
-app.get("/api/system", (req, res) => {
-    res.send("Anorak server alive");
-  });
+
+router.get('/', (req, res, next) => {
+    res.json({ message: 'Ping from auth'})
+    next()
+})
+
 
 
 // Protected API endpoint to test the authentication midleware
-app.get('/api/protected', authenticateToken, encryptData, (req, res) => {
+router.get('/protected', authenticateToken, encryptData, (req, res) => {
   const authData = res.authData
    res.json(
    {
@@ -63,7 +61,7 @@ app.get('/api/protected', authenticateToken, encryptData, (req, res) => {
 
 
 // Create a token based on the ACCESS_TOKEN_SECRET stored in .env
-app.post('/api/createtoken', (req, res) =>{ 
+router.post('/createtoken', (req, res) =>{ 
   jwt.sign(payload, privatekey, signOptions, (err, token) => {
        res.json({
            token
@@ -72,14 +70,14 @@ app.post('/api/createtoken', (req, res) =>{
 })
 
 // Midlewear to sign data
-function encryptData(res, req, next){
+ function encryptData(res, req, next){
   console.log(res.authData)
   next()
 }
 
 
 // Midlewear to authenticate the token on the requests
-function authenticateToken(req, res, next) {
+ function authenticateToken(req, res, next) {
   // Grab the authorization token
   const bearerHeader = req.headers['authorization']    
   // Check that token exist in request
@@ -102,6 +100,13 @@ function authenticateToken(req, res, next) {
 }
 
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port: ${PORT}`);
-});
+
+
+
+
+
+module.exports = {
+    router,
+    authenticateToken,
+    encryptData
+}
