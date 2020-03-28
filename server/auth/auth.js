@@ -34,7 +34,7 @@ router.post(`/login`, (req, res) => {
             res.json(token)
         })
     }else{
-        res.sendStatus(403)
+        res.sendStatus(401)
     }
 })
 
