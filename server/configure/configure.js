@@ -28,7 +28,7 @@ router.post(`/init`, (req, res) => {
       fs.writeFile(`private.key`, privateKey, (err) => {
         if (err) res.sendStatus(401)
       })
-      fs.writeFile(`public.key`, privateKey, (err) => {
+      fs.writeFile(`public.key`, publicKey, (err) => {
         if (err) res.sendStatus(401)
       })
       res.sendStatus(200)

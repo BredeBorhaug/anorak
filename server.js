@@ -1,10 +1,12 @@
+const dotenv = require('dotenv')
+dotenv.config()
 const express = require('express');
 const bodyParser = require('body-parser');
 
 
 
 const app = express();
-const port = process.env.PORT || 3010;
+const port = process.env.PORT // || 3010;
 
 // require routes
 const auth = require(`./server/auth/auth`)
@@ -18,7 +20,7 @@ app.use(`/api/auth`, auth.router)
 app.use(`/api/configure`, configure.router)
 
 app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+  res.send({ express: 'Hello From Anorak' });
 });
 
 app.post('/api/world', (req, res) => {

@@ -27,12 +27,16 @@ class App extends Component {
   
   handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch('/api/world', {
+    const response = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ post: this.state.post }),
+      body: JSON.stringify({
+        username: `anorak`,
+        password: `anorak`
+      })
+      //      body: JSON.stringify({ post: this.state.post }),
     });
     const body = await response.text();
     
@@ -45,28 +49,28 @@ render() {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Anorak is ready to move to the next stage of dev.
           </p>
           <a
             className="App-link"
-            href="https://reactjs.org"
+            href="https://github.com/BredeBorhaug/anorak"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Learn about Anorak
           </a>
         </header>
         <p>{this.state.response}</p>
         <form onSubmit={this.handleSubmit}>
           <p>
-            <strong>Post to Server:</strong>
+            <strong>Login to server:</strong>
           </p>
           <input
             type="text"
             value={this.state.post}
             onChange={e => this.setState({ post: e.target.value })}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Login</button>
         </form>
         <p>{this.state.responseToPost}</p>
       </div>

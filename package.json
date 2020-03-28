@@ -4,9 +4,11 @@
   "description": "The anorak project",
   "main": "server.js",
   "scripts": {
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": "npm server.js",
+    "server-dev": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run client\"",
     "debug-server": "node --nolazy --inspect-brk=3010 server.js"
   },
   "author": "brede@borhaug.io",
@@ -14,6 +16,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1"
