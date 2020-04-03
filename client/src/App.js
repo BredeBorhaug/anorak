@@ -7,26 +7,27 @@ import './App.css';
 class App extends Component {
   state = {
     response: '',
-    post: '',
-    responseToPost: '',
+    auth : {
+      token: ''
+    }
   };
-  
+
   componentDidMount() {
     this.callApi()
       .then(res => this.setState({ response: res.express }))
       .catch(err => console.log(err));
   }
-  
+
   callApi = async () => {
-    const response = await fetch('/api/hello');
+    const response = await fetch('/api/cms/hello');
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
-    
+
     return body;
   };
-  
-  handleSubmit = async e => {
-    e.preventDefault();
+
+  handleLogin = async e => {
+    e.preventDefault()
     const response = await fetch('/api/auth/login', {
       method: 'POST',
       headers: {
@@ -39,11 +40,12 @@ class App extends Component {
       //      body: JSON.stringify({ post: this.state.post }),
     });
     const body = await response.text();
-    
-    this.setState({ responseToPost: body });
-  };
-  
-render() {
+    const auth = {...this.state.auth}
+    auth.token = body
+    this.setState( { auth} );
+  }
+
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -61,18 +63,11 @@ render() {
           </a>
         </header>
         <p>{this.state.response}</p>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <strong>Login to server:</strong>
-          </p>
-          <input
-            type="text"
-            value={this.state.post}
-            onChange={e => this.setState({ post: e.target.value })}
-          />
-          <button type="submit">Login</button>
-        </form>
-        <p>{this.state.responseToPost}</p>
+        <p>
+          <strong>Login to server:</strong>
+        </p>
+        <button type="button" onClick={this.handleLogin}>Login</button>
+        <p>{this.state.auth.token}</p>
       </div>
     );
   }
