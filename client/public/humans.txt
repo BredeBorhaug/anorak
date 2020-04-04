@@ -1,5 +1,0 @@
-/* TEAM */
-    Brede Boerhaug
-    Twitter: @BredeBorhaug
-    Location: Asker, Norway.
-

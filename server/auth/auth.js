@@ -28,6 +28,7 @@ router.post(`/login`, (req, res) => {
     // validating the username and password
     if (req.body.username === user && req.body.password===pwd){
         // create the jwt and return it to the user
+        console.log(`Login attempt`)
         payload.user = req.body.username
         payload.id = 1     
         jwt.sign(payload, privateKey, signOptions, function(err, token) {
