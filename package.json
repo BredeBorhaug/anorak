@@ -1,0 +1,29 @@
+{
+  "name": "anorak",
+  "version": "0.1.0",
+  "description": "The anorak project",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "server": "npm server.js",
+    "server-dev": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run client\"",
+    "debug-server": "node --nolazy --inspect-brk=3010 server.js",
+    "debug-client": "cd client && npm run start",
+    "debug-dev": "concurrently --kill-others-on-fail --nolazy --inspect-brk=3010 \"npm run server-dev\" \"npm run client\""
+  },
+  "author": "brede@borhaug.io",
+  "license": "MIT",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "material-components-web": "^5.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}

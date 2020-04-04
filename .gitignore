@@ -7,3 +7,9 @@ node_modules
 .npm
 .cache
 dist
+
+# ignore private.key and public.key
+public.key
+private.key
+
+#ignore .env
