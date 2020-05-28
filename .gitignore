@@ -13,3 +13,6 @@ public.key
 private.key
 
 #ignore .env
+
+# ignore the logs
+/logs
