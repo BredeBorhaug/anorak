@@ -7,7 +7,7 @@ const setupLogger = require("./init/setupLogging")
 const setupAuthentication = require("./init/setupAuth")
 
 const setupServer = require("./init/setupServer")
-const setupPing = require("./init/setupPing")
+const setupPong = require("./init/setupPong")
 
 const setupRoutes = require("./init/setupRoutes")
 
@@ -36,7 +36,7 @@ const start = async () => {
 		app.set("etag", false) // Disable etags to prevent overzealous caching
 		
 // Setting all the routes
-		setupPing(app, config.auth)
+		setupPong(app, config.auth)
 
 		await setupAuthentication(app, config.auth)
 
